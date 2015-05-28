@@ -3,7 +3,7 @@
 
 #if MEM_INIT_METHOD == 2
 if (memoryInitializer) (function(s) {
-  for (var i = 0; i < s.length; ++i) HEAPU8[i] = s.charCodeAt(i);
+  for (var i = 0; i < s.length; ++i) HEAPU8[STATIC_BASE + i] = s.charCodeAt(i);
 })(memoryInitializer);
 #else
 #if MEM_INIT_METHOD == 1
