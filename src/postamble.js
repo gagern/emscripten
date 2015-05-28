@@ -1,6 +1,12 @@
 
 // === Auto-generated postamble setup entry stuff ===
 
+#if MEM_INIT_METHOD == 2
+if (memoryInitializer) (function(s) {
+  for (var i = 0; i < s.length; ++i) HEAPU8[i] = s.charCodeAt(i);
+})(memoryInitializer);
+#else
+#if MEM_INIT_METHOD == 1
 if (memoryInitializer) {
   if (typeof Module['locateFile'] === 'function') {
     memoryInitializer = Module['locateFile'](memoryInitializer);
@@ -48,6 +54,8 @@ if (memoryInitializer) {
     }
   }
 }
+#endif
+#endif
 
 function ExitStatus(status) {
   this.name = "ExitStatus";
