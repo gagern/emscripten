@@ -1344,18 +1344,17 @@ try:
 
   js_transform_tempfiles = [final]
 
-  if memory_init_file or shared.Settings.MEM_INIT_METHOD == 2:
+  if shared.Settings.MEM_INIT_METHOD > 0:
     memfile = target + '.mem'
     shared.try_delete(memfile)
     def repl(m):
       # handle chunking of the memory initializer
       s = m.group(1)
-      if len(s) == 0 and not shared.Settings.EMTERPRETIFY: return '' # emterpreter must have a mem init file; otherwise, don't emit 0-size ones
+      if len(s) == 0: return '' # don't emit 0-size ones
       membytes = [int(x or '0') for x in s.split(',')]
       while membytes and membytes[-1] == 0:
         membytes.pop()
-      if not membytes and not shared.Settings.EMTERPRETIFY:
-        return ''
+      if not membytes: return ''
       if not memory_init_file:
         # memory initializer in a string literal
         s = list(membytes)
