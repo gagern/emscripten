@@ -19,6 +19,7 @@ optimal_order = [
   'asm2nn',
   'asm3',
   'asm2',
+  'asm2m',
   'asm2g',
   'asm2f',
   'asm1',

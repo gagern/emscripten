@@ -104,6 +104,7 @@ test_modes = [
   'asm2f',
   'asm2g',
   'asm2i',
+  'asm2m',
   'asm2nn'
 ]
 test_index = 0
